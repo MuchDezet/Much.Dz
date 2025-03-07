@@ -1,0 +1,252 @@
+@import "tailwindcss";
+
+  @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
+
+  @theme {
+--font-primary: 'SF Pro Display', sans-serif;
+  --font-secondary: 'SF Pro Text', sans-serif;
+  --color-primary: #101010;
+  /* Dark Gray */
+  --color-secondary: #E0E0E0;
+  /* Light Gray */
+  --text-hover: #C0C0C0;
+  --text-secondary: #ffffff;
+  --color-primary-rgb: 16, 16, 16;
+  --color-secondary-rgb: 224, 224, 224;
+  }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+  
+      50% {
+        transform: translateY(-10px);
+      }
+  
+      100% {
+        transform: translateY(0px);
+      }
+    }
+  
+    .floating-icon {
+      animation: float 3s ease-in-out infinite;
+    }
+  
+    .grid-overlay {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 33%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      opacity: 0.5;
+      z-index: 5;
+    }
+  
+    .grid-cell {
+      background: rgba(255, 255, 255, 0.2);
+      clip-path: polygon(0 0, 100% 0, 100% 100%);
+    }
+  
+    .book-image-container {
+      position: relative;
+      display: inline-block;
+    }
+
+.about-section {
+  width: 100%;
+  height: 100%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+
+.autoTakeFull {
+  animation: autoTakeFull both;
+  animation-timeline: view(10% 20%);
+}
+
+@keyframes autoTakeFull {
+  to {
+    width: 100%;
+    height: 100vh;
+  }
+}
+
+@keyframes animate-gradient {
+  0% {
+    background-position: 0%;
+  }
+
+  100% {
+    background-position: 200%;
+  }
+}
+
+.gradient-text {
+  font-family: "SF Pro Display", sans-serif;
+  font-weight: 900;
+  font-size: 100px;
+  max-width: 1150px;
+  text-align: center;
+  margin: 25px 0;
+  text-transform: uppercase;
+  background: linear-gradient(to right,
+      #fff,
+      #c0c0c0,
+      #b8b8b8,
+      #b0b0b0,
+      #a8a8a8,
+      #a0a0a0,
+      #fff);
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animate-gradient 2s linear infinite;
+}
+
+/* Simple scroll animation for the heading */
+.scroll-animation {
+  animation: slideUp both;
+  animation-timeline: view();
+  animation-range: entry 10% cover 30%;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+.image-box {
+  width: 360px;
+  height: 510px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+}
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+}
+
+/* src/components/Loader.css */
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #121212;
+  /* Match your primary background color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: background-color 0.8s ease;
+}
+
+.fade-background {
+  background-color: rgba(18, 18, 18, 0);
+  /* Fade out background */
+}
+
+.logo-text-container {
+  position: relative;
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  /* Smooth, slightly bouncy transition */
+}
+
+.original-text {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.reveal-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: revealChar 0.5s forwards;
+}
+
+@keyframes revealChar {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stage-visible {
+  /* Text is fully visible, centered */
+  transform: translate(0, 0);
+}
+
+.stage-moving {
+  /* Text starts moving to top-left corner */
+  transform: translate(calc(-50vw + 60px), calc(-50vh + 40px)) scale(0.8);
+}
+
+.stage-transform {
+  /* Text is in position for the logo */
+  transform: translate(calc(-50vw + 60px), calc(-50vh + 40px)) scale(0.8);
+}
+
+.logo-text {
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+  position: relative;
+  animation: morphToLogo 0.5s forwards;
+}
+
+@keyframes morphToLogo {
+  0% {
+    letter-spacing: 1px;
+    opacity: 0;
+  }
+
+  100% {
+    letter-spacing: 0px;
+    opacity: 1;
+  }
+}
+
+/* Add an elegant reveal animation for the content after the logo animation */
+.content-reveal {
+  opacity: 0;
+  animation: contentFadeIn 1s forwards;
+}
+
+@keyframes contentFadeIn {
+  to {
+    opacity: 1;
+  }
+}
